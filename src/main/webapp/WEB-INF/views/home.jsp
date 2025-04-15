@@ -1,17 +1,23 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nykim
-  Date: 2022/12/13
-  Time: 12:55 오전
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  <p> <a href="${pageContext.request.contextPath}/offers"> Show current offers</a></p>
-  <p> <a href="${pageContext.request.contextPath}/createoffer"> Show current offers</a></p>
-  </body>
+<head>
+  <title>학사 정보 시스템</title>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main-style.css">
+</head>
+<body>
+<h1>📚 학사 정보 시스템 메인</h1>
+
+<ul>
+  <li>
+    <a href="${pageContext.request.contextPath}/completed-courses">학년별 이수 학점 조회</a>
+  </li>
+  <li>
+    <a href="${pageContext.request.contextPath}/enroll">수강 신청하기</a>
+  </li>
+  <li>
+    <a href="${pageContext.request.contextPath}/enrollments">수강 신청 조회</a>
+  </li>
+</ul>
+</body>
 </html>
+
