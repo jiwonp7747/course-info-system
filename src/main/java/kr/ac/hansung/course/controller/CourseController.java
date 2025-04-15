@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -85,8 +86,17 @@ public class CourseController {
         return "redirect:/";
     }
 
-    @GetMapping("/current-courses")
-    public String getRegisteredCourses() {
-        return null;
+    @GetMapping("/registered-courses")
+    public String getRegisteredCourses(Model model) {
+        int currentYear = LocalDate.now().getYear();
+        int currentSemester = (LocalDate.now().getMonthValue() <= 6) ? 1 : 2;
+
+        List<Course> response = courseService.getCoursesByYearAndSemester(currentYear, currentSemester);
+        model.addAttribute("courses", response);
+        model.addAttribute("year", currentYear);
+        model.addAttribute("semester", currentSemester);
+
+        return "registered-courses";
     }
+
 }

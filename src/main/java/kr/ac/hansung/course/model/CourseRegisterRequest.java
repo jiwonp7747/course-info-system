@@ -35,3 +35,4 @@ public class CourseRegisterRequest {
     private Integer credit;
 }
 
+;;;
