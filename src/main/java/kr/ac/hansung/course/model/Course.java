@@ -1,9 +1,11 @@
 package kr.ac.hansung.course.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "course")
+@Getter
 public class Course {
 
     @Id

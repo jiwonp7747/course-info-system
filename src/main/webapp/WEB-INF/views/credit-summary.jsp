@@ -15,6 +15,7 @@
         <th>수강년도</th>
         <th>학기</th>
         <th>총 학점</th>
+        <th>상세 보기</th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,9 @@
             <td>${summary.year}</td>
             <td>${summary.semester}</td>
             <td>${summary.totalCredit}</td>
+            <td>
+                <a href="${pageContext.request.contextPath}/courses?year=${summary.year}&semester=${summary.semester}">상세보기</a>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

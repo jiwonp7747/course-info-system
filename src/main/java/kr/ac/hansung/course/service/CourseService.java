@@ -1,6 +1,7 @@
 package kr.ac.hansung.course.service;
 
 import kr.ac.hansung.course.dao.CourseDao;
+import kr.ac.hansung.course.model.Course;
 import kr.ac.hansung.course.model.CreditSummaryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,9 @@ public class CourseService {
 
     public List<CreditSummaryDto> getCoursesGroupBySemester() {
         return courseDao.getCreditSummaryBySemester();
+    }
+
+    public List<Course> getCoursesByYearAndSemester(int year, int semester) {
+        return courseDao.getCoursesBySemester(year, semester);
     }
 }

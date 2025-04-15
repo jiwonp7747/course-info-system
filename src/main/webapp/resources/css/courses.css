@@ -1,0 +1,46 @@
+/* /resources/css/style.css */
+
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: blue;
+}
+
+p {
+    text-align: center; /* 링크를 감싸는 p 태그를 중앙 정렬 */
+}
+
+p a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin: 20px auto;
+}
+
+p a:hover {
+    background-color: #0056b3;
+}

@@ -1,5 +1,6 @@
 package kr.ac.hansung.course.controller;
 
+import kr.ac.hansung.course.model.Course;
 import kr.ac.hansung.course.model.CreditSummaryDto;
 import kr.ac.hansung.course.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -36,12 +38,25 @@ public class CourseController {
         return "credit-summary";
     }
 
+    @GetMapping("/courses")
+    public String getCoursesByYearAndSemester(
+            Model model,
+            @RequestParam(name = "year") int year,
+            @RequestParam(name = "semester") int semester
+    ) {
+        List<Course> response= courseService.getCoursesByYearAndSemester(year, semester);
+
+        model.addAttribute("courses", response);
+
+        return "courses";
+    }
+
     @PostMapping("/course")
     public String registerCourse(int studentId, int grade) {
         return null;
     }
 
-    @GetMapping("/courses")
+    @GetMapping("/current-courses")
     public String getRegisteredCourses() {
         return null;
     }
