@@ -1,14 +1,15 @@
 package kr.ac.hansung.course.controller;
 
+import jakarta.validation.Valid;
 import kr.ac.hansung.course.model.Course;
+import kr.ac.hansung.course.model.CourseRegisterRequest;
 import kr.ac.hansung.course.model.CreditSummaryDto;
 import kr.ac.hansung.course.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class CourseController {
         this.courseService = courseService;
     }
 
+    /**
+     * 학년별 이수 학점 조회 페이지
+     * */
     @GetMapping("/completed-courses")
     public String getCompletedCoursesByGrade(Model model) {
         List<CreditSummaryDto> response= courseService.getCoursesGroupBySemester();
@@ -38,6 +42,9 @@ public class CourseController {
         return "credit-summary";
     }
 
+    /**
+     * 학년별, 학기별 수강 과목 상세 조회 페이지
+     * */
     @GetMapping("/courses")
     public String getCoursesByYearAndSemester(
             Model model,
@@ -51,9 +58,31 @@ public class CourseController {
         return "courses";
     }
 
+    /**
+     * 수강 신청 페이지
+     * */
+    @GetMapping("/register-course")
+    public String getRegisterCoursePage(
+            Model model
+    ) {
+        model.addAttribute("courseRegisterRequest", new CourseRegisterRequest());
+        return "register-course";
+    }
+
+    /**
+     * 수강 신청 api
+     * */
     @PostMapping("/course")
-    public String registerCourse(int studentId, int grade) {
-        return null;
+    public String registerCourse(
+            @Valid @ModelAttribute CourseRegisterRequest request,
+            BindingResult bindingResult
+    ) {
+        if (bindingResult.hasErrors()) {
+            return "register-course"; // 입력폼 다시 보여주기 (JSP 파일명)
+        }
+        courseService.saveCourse(request);
+
+        return "redirect:/";
     }
 
     @GetMapping("/current-courses")

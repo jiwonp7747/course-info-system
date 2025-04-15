@@ -12,7 +12,7 @@
     <a href="${pageContext.request.contextPath}/completed-courses">학년별 이수 학점 조회</a>
   </li>
   <li>
-    <a href="${pageContext.request.contextPath}/enroll">수강 신청하기</a>
+    <a href="${pageContext.request.contextPath}/register-course">수강 신청하기</a>
   </li>
   <li>
     <a href="${pageContext.request.contextPath}/enrollments">수강 신청 조회</a>
