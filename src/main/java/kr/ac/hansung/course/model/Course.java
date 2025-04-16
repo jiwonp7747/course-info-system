@@ -19,22 +19,22 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "year")
+    @Column(name = "year", nullable = false)
     private int year;
 
-    @Column(name = "semester")
+    @Column(name = "semester", nullable = false)
     private int semester;
 
-    @Column(name = "course_code")
+    @Column(name = "course_code", nullable = false)
     private String courseCode;
 
-    @Column(name = "course_name")
+    @Column(name = "course_name", length = 100, nullable = false)
     private String courseName;
 
-    @Column(name = "course_type")
+    @Column(name = "course_type", length = 20)
     private String courseType;
 
-    @Column(name = "professor")
+    @Column(name = "professor", length = 50)
     private String professor;
 
     @Column(name = "credit")

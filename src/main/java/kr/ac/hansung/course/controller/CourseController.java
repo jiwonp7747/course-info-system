@@ -77,14 +77,16 @@ public class CourseController {
     @PostMapping("/course")
     public String registerCourse(
             @Valid @ModelAttribute CourseRegisterRequest request,
-            BindingResult bindingResult
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes
     ) {
         if (bindingResult.hasErrors()) {
             return "register-course"; // 입력폼 다시 보여주기 (JSP 파일명)
         }
         courseService.saveCourse(request);
+        redirectAttributes.addFlashAttribute("alertMessage", "✅ 수강 신청이 완료되었습니다.");
 
-        return "redirect:/";
+        return "redirect:/registered-courses";
     }
 
     /**
