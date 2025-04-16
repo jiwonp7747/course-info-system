@@ -16,7 +16,7 @@
             <td>수강년도:</td>
             <td>
                 <form:input path="year"/>
-                <form:errors path="year" cssClass="error"/>
+                <form:errors path="year" cssClass="error" />
             </td>
         </tr>
         <tr>

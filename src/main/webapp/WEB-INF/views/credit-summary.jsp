@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>이수 학점 요약</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/credit-summary.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/courses.css">
 </head>
 <body>
 
@@ -33,6 +33,8 @@
 </table>
 
 <h3>총 이수 학점: <span>${totalCredit}</span></h3>
+
+<p><a href="${pageContext.request.contextPath}/">메인으로 돌아가기</a></p>
 
 </body>
 </html>

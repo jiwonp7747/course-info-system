@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -97,6 +98,17 @@ public class CourseController {
         model.addAttribute("semester", currentSemester);
 
         return "registered-courses";
+    }
+
+    @DeleteMapping("/course")
+    public String deleteCourse(
+            @RequestParam("id") Long id,
+            RedirectAttributes redirectAttributes
+    ){
+        courseService.deleteById(id);
+
+        redirectAttributes.addFlashAttribute("alertMessage", "✅ 수강 신청이 취소되었습니다.");
+        return "redirect:/registered-courses";
     }
 
 }

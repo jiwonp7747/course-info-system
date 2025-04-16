@@ -9,6 +9,12 @@
 
 <h2>${year}년도 ${semester}학기 수강 신청 현황</h2>
 
+<c:if test="${not empty alertMessage}">
+    <script>
+        alert("${alertMessage}");
+    </script>
+</c:if>
+
 <c:choose>
     <c:when test="${empty courses}">
         <p style="text-align: center;">수강 신청 내역이 없습니다.</p>
@@ -22,6 +28,7 @@
                 <th>교과구분</th>
                 <th>담당교수</th>
                 <th>학점</th>
+                <th>수강 취소</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +39,13 @@
                     <td>${course.courseType}</td>
                     <td>${course.professor}</td>
                     <td>${course.credit}</td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/course" method="post" onsubmit="return confirm('정말로 수강 신청을 취소하시겠습니까?');">
+                            <input type="hidden" name="id" value="${course.id}" />
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit">취소</button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>

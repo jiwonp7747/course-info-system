@@ -43,4 +43,8 @@ public class CourseService {
 
         courseDao.insertCourse(course);
     }
+
+    public void deleteById(Long id) {
+        courseDao.deleteCourse(id);
+    }
 }
