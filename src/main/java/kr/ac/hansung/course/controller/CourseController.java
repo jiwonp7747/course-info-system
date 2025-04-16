@@ -87,6 +87,9 @@ public class CourseController {
         return "redirect:/";
     }
 
+    /**
+     * 현재 학기 수강 신청 현황
+     * */
     @GetMapping("/registered-courses")
     public String getRegisteredCourses(Model model) {
         int currentYear = LocalDate.now().getYear();
@@ -100,6 +103,9 @@ public class CourseController {
         return "registered-courses";
     }
 
+    /**
+     * 수강 신청 취소 api
+     * */
     @DeleteMapping("/course")
     public String deleteCourse(
             @RequestParam("id") Long id,
